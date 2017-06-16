@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="care_center_activity_setup">
+          <Key>
+            <PropertyRef Name="care_center_activity_id" />
+          </Key>
+          <Property Name="care_center_activity_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_activity_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_center_activity_details" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_activity_icon_path" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="care_center_bookeeping">
+          <Key>
+            <PropertyRef Name="care_center_bookeeping_id" />
+          </Key>
+          <Property Name="care_center_bookeeping_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="care_center_bookeeping_details">
+          <Key>
+            <PropertyRef Name="care_center_book_keeping_details_id" />
+          </Key>
+          <Property Name="care_center_book_keeping_details_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_bookeeping_id" Type="uniqueidentifier" />
+          <Property Name="payment_description" Type="nvarchar" MaxLength="500" />
+          <Property Name="payment_amount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="care_center_invoice">
+          <Key>
+            <PropertyRef Name="care_center_invoice_id" />
+          </Key>
+          <Property Name="care_center_invoice_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_kiddie_id" Type="uniqueidentifier" />
+          <Property Name="care_center_book_keeping_details_id" Type="uniqueidentifier" />
+          <Property Name="receipt_no" Type="nvarchar" MaxLength="100" />
+          <Property Name="payment_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="payment_made" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="payment_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="care_center_kiddies">
+          <Key>
+            <PropertyRef Name="care_kiddie_id" />
+          </Key>
+          <Property Name="care_kiddie_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+          <Property Name="care_parent_id" Type="uniqueidentifier" />
+          <Property Name="care_kiddie_lastname" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_kiddie_firstname" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_kiddie_othername" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_kiddie_DOB" Type="date" />
+          <Property Name="care_kiddie_blood_group" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_kiddie_genotype" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_kiddie_profile_photo_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_kiddie_gender" Type="nchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="care_center_kiddies_activity">
+          <Key>
+            <PropertyRef Name="care_center_kiddies_activity_id" />
+          </Key>
+          <Property Name="care_center_kiddies_activity_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_activity_id" Type="uniqueidentifier" />
+          <Property Name="care_center_kiddies_activity_notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_kiddies_activity_image_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_kiddies_activity_date_updated" Type="datetime" />
+          <Property Name="care_kiddie_id" Type="uniqueidentifier" />
+          <Property Name="care_center_kiddies_activity_video_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_kiddies_activity_media_type" Type="bit" />
+        </EntityType>
+        <EntityType Name="care_center_log">
+          <Key>
+            <PropertyRef Name="care_center_log_details" />
+          </Key>
+          <Property Name="care_center_log_details" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+          <Property Name="care_center_last_login_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="care_center_parents">
+          <Key>
+            <PropertyRef Name="care_parent_id" />
+          </Key>
+          <Property Name="care_parent_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_parent_login_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_parent_login_password" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_parent_full_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_parent_contact_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_parent_contact_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_parent_occupation" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="care_center_setup_tab">
+          <Key>
+            <PropertyRef Name="care_center_id" />
+          </Key>
+          <Property Name="care_center_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_login_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_center_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_location" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_subscription_status" Type="bit" />
+          <Property Name="care_center_password" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_date_registered" Type="datetime" />
+          <Property Name="care_center_activate_deactivate" Type="bit" />
+          <Property Name="care_center_staff_strength" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_center_folder_id" Type="uniqueidentifier" />
+          <Property Name="care_center_email" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_center_contact_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_center_website" Type="nvarchar" MaxLength="100" />
+          <Property Name="care_center_image_path" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="care_center_social_media">
+          <Key>
+            <PropertyRef Name="care_center_social_media_id" />
+          </Key>
+          <Property Name="care_center_social_media_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="care_center_staffs">
+          <Key>
+            <PropertyRef Name="care_staff_id" />
+          </Key>
+          <Property Name="care_staff_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_staff_login_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_staff_password" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_staff_gender" Type="nchar" MaxLength="10" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+          <Property Name="care_staff_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_staff_contact_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_staff_ratings" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_staff_date_registered" Type="datetime" />
+          <Property Name="care_staff_employment_status" Type="bit" />
+          <Property Name="care_staff_email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_details_table">
+          <Key>
+            <PropertyRef Name="care_center_subscription_details_id" />
+          </Key>
+          <Property Name="care_center_subscription_details_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="subscription_type_id" Type="uniqueidentifier" />
+          <Property Name="subscription_start_date" Type="datetime" />
+          <Property Name="subscription_end_date" Type="datetime" />
+          <Property Name="subscription_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="subscription_note" Type="nvarchar" MaxLength="50" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_features">
+          <Key>
+            <PropertyRef Name="subscription_features_id" />
+          </Key>
+          <Property Name="subscription_features_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="subscription_type_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="subscription_features_description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_type">
+          <Key>
+            <PropertyRef Name="subscription_type_id" />
+          </Key>
+          <Property Name="subscription_type_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="subscription_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="subscription_duration" Type="int" />
+          <Property Name="subscription_value" Type="int" />
+        </EntityType>
+        <EntityType Name="care_photo_details">
+          <Key>
+            <PropertyRef Name="care_center_photo_id" />
+          </Key>
+          <Property Name="care_center_photo_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_kiddie_id" Type="uniqueidentifier" />
+          <Property Name="care_center_photo_path" Type="nvarchar" MaxLength="500" />
+          <Property Name="care_photo_date_captured" Type="datetime" />
+          <Property Name="care_photo_description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="care_setup_photos">
+          <Key>
+            <PropertyRef Name="care_setup_photo_id" />
+          </Key>
+          <Property Name="care_setup_photo_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="care_center_id" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_care_center_bookeeping_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_bookeeping" Type="Self.care_center_bookeeping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_bookeeping">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_bookeeping_details_care_center_bookeeping">
+          <End Role="care_center_bookeeping" Type="Self.care_center_bookeeping" Multiplicity="0..1" />
+          <End Role="care_center_bookeeping_details" Type="Self.care_center_bookeeping_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_bookeeping">
+              <PropertyRef Name="care_center_bookeeping_id" />
+            </Principal>
+            <Dependent Role="care_center_bookeeping_details">
+              <PropertyRef Name="care_center_bookeeping_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_invoice_care_center_bookeeping_details">
+          <End Role="care_center_bookeeping_details" Type="Self.care_center_bookeeping_details" Multiplicity="0..1" />
+          <End Role="care_center_invoice" Type="Self.care_center_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_bookeeping_details">
+              <PropertyRef Name="care_center_book_keeping_details_id" />
+            </Principal>
+            <Dependent Role="care_center_invoice">
+              <PropertyRef Name="care_center_book_keeping_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_invoice_care_center_kiddies">
+          <End Role="care_center_kiddies" Type="Self.care_center_kiddies" Multiplicity="0..1" />
+          <End Role="care_center_invoice" Type="Self.care_center_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_center_invoice">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_activity_care_center_activity_setup">
+          <End Role="care_center_activity_setup" Type="Self.care_center_activity_setup" Multiplicity="0..1" />
+          <End Role="care_center_kiddies_activity" Type="Self.care_center_kiddies_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_activity_setup">
+              <PropertyRef Name="care_center_activity_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies_activity">
+              <PropertyRef Name="care_center_activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_activity_care_center_kiddies">
+          <End Role="care_center_kiddies" Type="Self.care_center_kiddies" Multiplicity="0..1" />
+          <End Role="care_center_kiddies_activity" Type="Self.care_center_kiddies_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies_activity">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_care_center_parent">
+          <End Role="care_center_parents" Type="Self.care_center_parents" Multiplicity="0..1" />
+          <End Role="care_center_kiddies" Type="Self.care_center_kiddies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_parents">
+              <PropertyRef Name="care_parent_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies">
+              <PropertyRef Name="care_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_kiddies" Type="Self.care_center_kiddies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_log_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_log" Type="Self.care_center_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_log">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_social_media_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_social_media" Type="Self.care_center_social_media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_social_media">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_staffs_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_staffs" Type="Self.care_center_staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_staffs">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_subscription_details_table_care_center_setup_tab">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_center_subscription_details_table" Type="Self.care_center_subscription_details_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_details_table">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_subscription_details_table_care_center_subscription_type">
+          <End Role="care_center_subscription_type" Type="Self.care_center_subscription_type" Multiplicity="0..1" />
+          <End Role="care_center_subscription_details_table" Type="Self.care_center_subscription_details_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_subscription_type">
+              <PropertyRef Name="subscription_type_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_details_table">
+              <PropertyRef Name="subscription_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_subscription_features_care_center_subscription_type">
+          <End Role="care_center_subscription_type" Type="Self.care_center_subscription_type" Multiplicity="1" />
+          <End Role="care_center_subscription_features" Type="Self.care_center_subscription_features" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_subscription_type">
+              <PropertyRef Name="subscription_type_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_features">
+              <PropertyRef Name="subscription_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_photo_details_care_center_kiddies">
+          <End Role="care_center_kiddies" Type="Self.care_center_kiddies" Multiplicity="0..1" />
+          <End Role="care_photo_details" Type="Self.care_photo_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_photo_details">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_setup_photos_care_setup_photos">
+          <End Role="care_center_setup_tab" Type="Self.care_center_setup_tab" Multiplicity="0..1" />
+          <End Role="care_setup_photos" Type="Self.care_setup_photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_setup_photos">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CareDBModelStoreContainer">
+          <EntitySet Name="care_center_activity_setup" EntityType="Self.care_center_activity_setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_bookeeping" EntityType="Self.care_center_bookeeping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_bookeeping_details" EntityType="Self.care_center_bookeeping_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_invoice" EntityType="Self.care_center_invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_kiddies" EntityType="Self.care_center_kiddies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_kiddies_activity" EntityType="Self.care_center_kiddies_activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_log" EntityType="Self.care_center_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_parents" EntityType="Self.care_center_parents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_setup_tab" EntityType="Self.care_center_setup_tab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_social_media" EntityType="Self.care_center_social_media" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_staffs" EntityType="Self.care_center_staffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_subscription_details_table" EntityType="Self.care_center_subscription_details_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_subscription_features" EntityType="Self.care_center_subscription_features" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_center_subscription_type" EntityType="Self.care_center_subscription_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_photo_details" EntityType="Self.care_photo_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="care_setup_photos" EntityType="Self.care_setup_photos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_care_center_bookeeping_care_center_setup_tab" Association="Self.FK_care_center_bookeeping_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_bookeeping" EntitySet="care_center_bookeeping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_bookeeping_details_care_center_bookeeping" Association="Self.FK_care_center_bookeeping_details_care_center_bookeeping">
+            <End Role="care_center_bookeeping" EntitySet="care_center_bookeeping" />
+            <End Role="care_center_bookeeping_details" EntitySet="care_center_bookeeping_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_invoice_care_center_bookeeping_details" Association="Self.FK_care_center_invoice_care_center_bookeeping_details">
+            <End Role="care_center_bookeeping_details" EntitySet="care_center_bookeeping_details" />
+            <End Role="care_center_invoice" EntitySet="care_center_invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_invoice_care_center_kiddies" Association="Self.FK_care_center_invoice_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_center_invoice" EntitySet="care_center_invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_activity_care_center_activity_setup" Association="Self.FK_care_center_kiddies_activity_care_center_activity_setup">
+            <End Role="care_center_activity_setup" EntitySet="care_center_activity_setup" />
+            <End Role="care_center_kiddies_activity" EntitySet="care_center_kiddies_activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_activity_care_center_kiddies" Association="Self.FK_care_center_kiddies_activity_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_center_kiddies_activity" EntitySet="care_center_kiddies_activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_care_center_parent" Association="Self.FK_care_center_kiddies_care_center_parent">
+            <End Role="care_center_parents" EntitySet="care_center_parents" />
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_care_center_setup_tab" Association="Self.FK_care_center_kiddies_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_log_care_center_setup_tab" Association="Self.FK_care_center_log_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_log" EntitySet="care_center_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_social_media_care_center_setup_tab" Association="Self.FK_care_center_social_media_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_social_media" EntitySet="care_center_social_media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_staffs_care_center_setup_tab" Association="Self.FK_care_center_staffs_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_staffs" EntitySet="care_center_staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_subscription_details_table_care_center_setup_tab" Association="Self.FK_care_center_subscription_details_table_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_subscription_details_table" EntitySet="care_center_subscription_details_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_subscription_details_table_care_center_subscription_type" Association="Self.FK_care_center_subscription_details_table_care_center_subscription_type">
+            <End Role="care_center_subscription_type" EntitySet="care_center_subscription_type" />
+            <End Role="care_center_subscription_details_table" EntitySet="care_center_subscription_details_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_subscription_features_care_center_subscription_type" Association="Self.FK_care_center_subscription_features_care_center_subscription_type">
+            <End Role="care_center_subscription_type" EntitySet="care_center_subscription_type" />
+            <End Role="care_center_subscription_features" EntitySet="care_center_subscription_features" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_photo_details_care_center_kiddies" Association="Self.FK_care_photo_details_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_photo_details" EntitySet="care_photo_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_setup_photos_care_setup_photos" Association="Self.FK_care_setup_photos_care_setup_photos">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_setup_photos" EntitySet="care_setup_photos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="care_center_bookeeping">
+          <Key>
+            <PropertyRef Name="care_center_bookeeping_id" />
+          </Key>
+          <Property Name="care_center_bookeeping_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_id" Type="Guid" />
+          <NavigationProperty Name="care_center_bookeeping_details" Relationship="CareDBModel.FK_care_center_bookeeping_details_care_center_bookeeping" FromRole="care_center_bookeeping" ToRole="care_center_bookeeping_details" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_bookeeping_care_center_setup_tab" FromRole="care_center_bookeeping" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <EntityType Name="care_center_social_media">
+          <Key>
+            <PropertyRef Name="care_center_social_media_id" />
+          </Key>
+          <Property Name="care_center_social_media_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_id" Type="Guid" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_social_media_care_center_setup_tab" FromRole="care_center_social_media" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_details_table">
+          <Key>
+            <PropertyRef Name="care_center_subscription_details_id" />
+          </Key>
+          <Property Name="care_center_subscription_details_id" Type="Guid" Nullable="false" />
+          <Property Name="subscription_type_id" Type="Guid" />
+          <Property Name="subscription_start_date" Type="DateTime" Precision="3" />
+          <Property Name="subscription_end_date" Type="DateTime" Precision="3" />
+          <Property Name="subscription_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="subscription_note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_id" Type="Guid" />
+          <NavigationProperty Name="care_center_subscription_type" Relationship="Self.FK_care_center_subscription_details_table_care_center_subscription_type" FromRole="care_center_subscription_details_table" ToRole="care_center_subscription_type" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_subscription_details_table_care_center_setup_tab" FromRole="care_center_subscription_details_table" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_features">
+          <Key>
+            <PropertyRef Name="subscription_features_id" />
+          </Key>
+          <Property Name="subscription_features_id" Type="Guid" Nullable="false" />
+          <Property Name="subscription_type_id" Type="Guid" Nullable="false" />
+          <Property Name="subscription_features_description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_subscription_type" Relationship="Self.FK_care_center_subscription_features_care_center_subscription_type" FromRole="care_center_subscription_features" ToRole="care_center_subscription_type" />
+        </EntityType>
+        <EntityType Name="care_center_subscription_type">
+          <Key>
+            <PropertyRef Name="subscription_type_id" />
+          </Key>
+          <Property Name="subscription_type_id" Type="Guid" Nullable="false" />
+          <Property Name="subscription_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="subscription_duration" Type="Int32" />
+          <Property Name="subscription_value" Type="Int32" />
+          <NavigationProperty Name="care_center_subscription_details_table" Relationship="Self.FK_care_center_subscription_details_table_care_center_subscription_type" FromRole="care_center_subscription_type" ToRole="care_center_subscription_details_table" />
+          <NavigationProperty Name="care_center_subscription_features" Relationship="Self.FK_care_center_subscription_features_care_center_subscription_type" FromRole="care_center_subscription_type" ToRole="care_center_subscription_features" />
+        </EntityType>
+        <Association Name="FK_care_center_subscription_details_table_care_center_subscription_type">
+          <End Role="care_center_subscription_type" Type="Self.care_center_subscription_type" Multiplicity="0..1" />
+          <End Role="care_center_subscription_details_table" Type="Self.care_center_subscription_details_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_subscription_type">
+              <PropertyRef Name="subscription_type_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_details_table">
+              <PropertyRef Name="subscription_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_subscription_features_care_center_subscription_type">
+          <End Role="care_center_subscription_type" Type="Self.care_center_subscription_type" Multiplicity="1" />
+          <End Role="care_center_subscription_features" Type="Self.care_center_subscription_features" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_subscription_type">
+              <PropertyRef Name="subscription_type_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_features">
+              <PropertyRef Name="subscription_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CareDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="care_center_bookeeping" EntityType="Self.care_center_bookeeping" />
+          <EntitySet Name="care_center_social_media" EntityType="Self.care_center_social_media" />
+          <EntitySet Name="care_center_subscription_details_table" EntityType="Self.care_center_subscription_details_table" />
+          <EntitySet Name="care_center_subscription_features" EntityType="Self.care_center_subscription_features" />
+          <EntitySet Name="care_center_subscription_type" EntityType="Self.care_center_subscription_type" />
+          <AssociationSet Name="FK_care_center_subscription_details_table_care_center_subscription_type" Association="Self.FK_care_center_subscription_details_table_care_center_subscription_type">
+            <End Role="care_center_subscription_type" EntitySet="care_center_subscription_type" />
+            <End Role="care_center_subscription_details_table" EntitySet="care_center_subscription_details_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_subscription_features_care_center_subscription_type" Association="Self.FK_care_center_subscription_features_care_center_subscription_type">
+            <End Role="care_center_subscription_type" EntitySet="care_center_subscription_type" />
+            <End Role="care_center_subscription_features" EntitySet="care_center_subscription_features" />
+          </AssociationSet>
+          <EntitySet Name="care_center_log" EntityType="CareDBModel.care_center_log" />
+          <EntitySet Name="care_center_bookeeping_details" EntityType="CareDBModel.care_center_bookeeping_details" />
+          <AssociationSet Name="FK_care_center_bookeeping_details_care_center_bookeeping" Association="CareDBModel.FK_care_center_bookeeping_details_care_center_bookeeping">
+            <End Role="care_center_bookeeping" EntitySet="care_center_bookeeping" />
+            <End Role="care_center_bookeeping_details" EntitySet="care_center_bookeeping_details" />
+          </AssociationSet>
+          <EntitySet Name="care_setup_photos" EntityType="CareDBModel.care_setup_photos" />
+          <EntitySet Name="care_center_activity_setup" EntityType="CareDBModel.care_center_activity_setup" />
+          <EntitySet Name="care_center_kiddies_activity" EntityType="CareDBModel.care_center_kiddies_activity" />
+          <AssociationSet Name="FK_care_center_kiddies_activity_care_center_activity_setup" Association="CareDBModel.FK_care_center_kiddies_activity_care_center_activity_setup">
+            <End Role="care_center_activity_setup" EntitySet="care_center_activity_setup" />
+            <End Role="care_center_kiddies_activity" EntitySet="care_center_kiddies_activity" />
+          </AssociationSet>
+          <EntitySet Name="care_center_parents" EntityType="CareDBModel.care_center_parents" />
+          <EntitySet Name="care_photo_details" EntityType="CareDBModel.care_photo_details" />
+          <EntitySet Name="care_center_invoice" EntityType="CareDBModel.care_center_invoice" />
+          <AssociationSet Name="FK_care_center_invoice_care_center_bookeeping_details" Association="CareDBModel.FK_care_center_invoice_care_center_bookeeping_details">
+            <End Role="care_center_bookeeping_details" EntitySet="care_center_bookeeping_details" />
+            <End Role="care_center_invoice" EntitySet="care_center_invoice" />
+          </AssociationSet>
+          <EntitySet Name="care_center_setup_tab" EntityType="CareDBModel.care_center_setup_tab" />
+          <AssociationSet Name="FK_care_center_bookeeping_care_center_setup_tab" Association="CareDBModel.FK_care_center_bookeeping_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_bookeeping" EntitySet="care_center_bookeeping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_log_care_center_setup_tab" Association="CareDBModel.FK_care_center_log_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_log" EntitySet="care_center_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_social_media_care_center_setup_tab" Association="CareDBModel.FK_care_center_social_media_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_social_media" EntitySet="care_center_social_media" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_subscription_details_table_care_center_setup_tab" Association="CareDBModel.FK_care_center_subscription_details_table_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_subscription_details_table" EntitySet="care_center_subscription_details_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_setup_photos_care_setup_photos" Association="CareDBModel.FK_care_setup_photos_care_setup_photos">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_setup_photos" EntitySet="care_setup_photos" />
+          </AssociationSet>
+          <EntitySet Name="care_center_kiddies" EntityType="CareDBModel.care_center_kiddies" />
+          <AssociationSet Name="FK_care_center_invoice_care_center_kiddies" Association="CareDBModel.FK_care_center_invoice_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_center_invoice" EntitySet="care_center_invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_activity_care_center_kiddies" Association="CareDBModel.FK_care_center_kiddies_activity_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_center_kiddies_activity" EntitySet="care_center_kiddies_activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_care_center_parent" Association="CareDBModel.FK_care_center_kiddies_care_center_parent">
+            <End Role="care_center_parents" EntitySet="care_center_parents" />
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_center_kiddies_care_center_setup_tab" Association="CareDBModel.FK_care_center_kiddies_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_care_photo_details_care_center_kiddies" Association="CareDBModel.FK_care_photo_details_care_center_kiddies">
+            <End Role="care_center_kiddies" EntitySet="care_center_kiddies" />
+            <End Role="care_photo_details" EntitySet="care_photo_details" />
+          </AssociationSet>
+          <EntitySet Name="care_center_staffs" EntityType="CareDBModel.care_center_staffs" />
+          <AssociationSet Name="FK_care_center_staffs_care_center_setup_tab" Association="CareDBModel.FK_care_center_staffs_care_center_setup_tab">
+            <End Role="care_center_setup_tab" EntitySet="care_center_setup_tab" />
+            <End Role="care_center_staffs" EntitySet="care_center_staffs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="care_center_log">
+          <Key>
+            <PropertyRef Name="care_center_log_details" />
+          </Key>
+          <Property Name="care_center_log_details" Type="Guid" Nullable="false" />
+          <Property Name="care_center_id" Type="Guid" />
+          <Property Name="care_center_last_login_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_log_care_center_setup_tab" FromRole="care_center_log" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <EntityType Name="care_center_bookeeping_details">
+          <Key>
+            <PropertyRef Name="care_center_book_keeping_details_id" />
+          </Key>
+          <Property Name="care_center_book_keeping_details_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_bookeeping_id" Type="Guid" />
+          <Property Name="payment_description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="payment_amount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="care_center_bookeeping" Relationship="CareDBModel.FK_care_center_bookeeping_details_care_center_bookeeping" FromRole="care_center_bookeeping_details" ToRole="care_center_bookeeping" />
+          <NavigationProperty Name="care_center_invoice" Relationship="CareDBModel.FK_care_center_invoice_care_center_bookeeping_details" FromRole="care_center_bookeeping_details" ToRole="care_center_invoice" />
+        </EntityType>
+        <Association Name="FK_care_center_bookeeping_details_care_center_bookeeping">
+          <End Type="CareDBModel.care_center_bookeeping" Role="care_center_bookeeping" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_bookeeping_details" Role="care_center_bookeeping_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_bookeeping">
+              <PropertyRef Name="care_center_bookeeping_id" />
+            </Principal>
+            <Dependent Role="care_center_bookeeping_details">
+              <PropertyRef Name="care_center_bookeeping_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="care_setup_photos">
+          <Key>
+            <PropertyRef Name="care_setup_photo_id" />
+          </Key>
+          <Property Name="care_setup_photo_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_id" Type="Guid" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_setup_photos_care_setup_photos" FromRole="care_setup_photos" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <EntityType Name="care_center_activity_setup">
+          <Key>
+            <PropertyRef Name="care_center_activity_id" />
+          </Key>
+          <Property Name="care_center_activity_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_activity_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_activity_details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_activity_icon_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_kiddies_activity" Relationship="CareDBModel.FK_care_center_kiddies_activity_care_center_activity_setup" FromRole="care_center_activity_setup" ToRole="care_center_kiddies_activity" />
+        </EntityType>
+        <EntityType Name="care_center_kiddies_activity">
+          <Key>
+            <PropertyRef Name="care_center_kiddies_activity_id" />
+          </Key>
+          <Property Name="care_center_kiddies_activity_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_activity_id" Type="Guid" />
+          <Property Name="care_center_kiddies_activity_notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_kiddies_activity_image_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_kiddies_activity_date_updated" Type="DateTime" Precision="3" />
+          <Property Name="care_kiddie_id" Type="Guid" />
+          <NavigationProperty Name="care_center_activity_setup" Relationship="CareDBModel.FK_care_center_kiddies_activity_care_center_activity_setup" FromRole="care_center_kiddies_activity" ToRole="care_center_activity_setup" />
+          <NavigationProperty Name="care_center_kiddies" Relationship="CareDBModel.FK_care_center_kiddies_activity_care_center_kiddies" FromRole="care_center_kiddies_activity" ToRole="care_center_kiddies" />
+          <Property Name="care_center_kiddies_activity_video_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_kiddies_activity_media_type" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_care_center_kiddies_activity_care_center_activity_setup">
+          <End Type="CareDBModel.care_center_activity_setup" Role="care_center_activity_setup" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_kiddies_activity" Role="care_center_kiddies_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_activity_setup">
+              <PropertyRef Name="care_center_activity_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies_activity">
+              <PropertyRef Name="care_center_activity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="care_center_parents">
+          <Key>
+            <PropertyRef Name="care_parent_id" />
+          </Key>
+          <Property Name="care_parent_id" Type="Guid" Nullable="false" />
+          <Property Name="care_parent_login_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_parent_login_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_parent_full_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_parent_contact_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_parent_contact_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_parent_occupation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_kiddies" Relationship="CareDBModel.FK_care_center_kiddies_care_center_parent" FromRole="care_center_parents" ToRole="care_center_kiddies" />
+        </EntityType>
+        <EntityType Name="care_photo_details">
+          <Key>
+            <PropertyRef Name="care_center_photo_id" />
+          </Key>
+          <Property Name="care_center_photo_id" Type="Guid" Nullable="false" />
+          <Property Name="care_kiddie_id" Type="Guid" />
+          <Property Name="care_center_photo_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_photo_date_captured" Type="DateTime" Precision="3" />
+          <Property Name="care_photo_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_kiddies" Relationship="CareDBModel.FK_care_photo_details_care_center_kiddies" FromRole="care_photo_details" ToRole="care_center_kiddies" />
+        </EntityType>
+        <EntityType Name="care_center_invoice">
+          <Key>
+            <PropertyRef Name="care_center_invoice_id" />
+          </Key>
+          <Property Name="care_center_invoice_id" Type="Guid" Nullable="false" />
+          <Property Name="care_kiddie_id" Type="Guid" />
+          <Property Name="care_center_book_keeping_details_id" Type="Guid" />
+          <Property Name="receipt_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="payment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payment_made" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="payment_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="care_center_bookeeping_details" Relationship="CareDBModel.FK_care_center_invoice_care_center_bookeeping_details" FromRole="care_center_invoice" ToRole="care_center_bookeeping_details" />
+          <NavigationProperty Name="care_center_kiddies" Relationship="CareDBModel.FK_care_center_invoice_care_center_kiddies" FromRole="care_center_invoice" ToRole="care_center_kiddies" />
+        </EntityType>
+        <Association Name="FK_care_center_invoice_care_center_bookeeping_details">
+          <End Type="CareDBModel.care_center_bookeeping_details" Role="care_center_bookeeping_details" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_invoice" Role="care_center_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_bookeeping_details">
+              <PropertyRef Name="care_center_book_keeping_details_id" />
+            </Principal>
+            <Dependent Role="care_center_invoice">
+              <PropertyRef Name="care_center_book_keeping_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="care_center_setup_tab">
+          <Key>
+            <PropertyRef Name="care_center_id" />
+          </Key>
+          <Property Name="care_center_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_login_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_subscription_status" Type="Boolean" />
+          <Property Name="care_center_password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_date_registered" Type="DateTime" Precision="3" />
+          <Property Name="care_center_activate_deactivate" Type="Boolean" />
+          <Property Name="care_center_staff_strength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_folder_id" Type="Guid" />
+          <Property Name="care_center_email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="care_center_image_path" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_bookeeping" Relationship="CareDBModel.FK_care_center_bookeeping_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_bookeeping" />
+          <NavigationProperty Name="care_center_log" Relationship="CareDBModel.FK_care_center_log_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_log" />
+          <NavigationProperty Name="care_center_social_media" Relationship="CareDBModel.FK_care_center_social_media_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_social_media" />
+          <NavigationProperty Name="care_center_subscription_details_table" Relationship="CareDBModel.FK_care_center_subscription_details_table_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_subscription_details_table" />
+          <NavigationProperty Name="care_setup_photos" Relationship="CareDBModel.FK_care_setup_photos_care_setup_photos" FromRole="care_center_setup_tab" ToRole="care_setup_photos" />
+          <NavigationProperty Name="care_center_kiddies" Relationship="CareDBModel.FK_care_center_kiddies_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_kiddies" />
+          <NavigationProperty Name="care_center_staffs" Relationship="CareDBModel.FK_care_center_staffs_care_center_setup_tab" FromRole="care_center_setup_tab" ToRole="care_center_staffs" />
+        </EntityType>
+        <Association Name="FK_care_center_bookeeping_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_bookeeping" Role="care_center_bookeeping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_bookeeping">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_log_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_log" Role="care_center_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_log">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_social_media_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_social_media" Role="care_center_social_media" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_social_media">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_subscription_details_table_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_subscription_details_table" Role="care_center_subscription_details_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_subscription_details_table">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_setup_photos_care_setup_photos">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_setup_photos" Role="care_setup_photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_setup_photos">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="care_center_kiddies">
+          <Key>
+            <PropertyRef Name="care_kiddie_id" />
+          </Key>
+          <Property Name="care_kiddie_id" Type="Guid" Nullable="false" />
+          <Property Name="care_center_id" Type="Guid" />
+          <Property Name="care_parent_id" Type="Guid" />
+          <Property Name="care_kiddie_lastname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_firstname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_othername" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_DOB" Type="DateTime" Precision="0" />
+          <Property Name="care_kiddie_blood_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_genotype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_profile_photo_path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_kiddie_gender" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="care_center_invoice" Relationship="CareDBModel.FK_care_center_invoice_care_center_kiddies" FromRole="care_center_kiddies" ToRole="care_center_invoice" />
+          <NavigationProperty Name="care_center_kiddies_activity" Relationship="CareDBModel.FK_care_center_kiddies_activity_care_center_kiddies" FromRole="care_center_kiddies" ToRole="care_center_kiddies_activity" />
+          <NavigationProperty Name="care_center_parents" Relationship="CareDBModel.FK_care_center_kiddies_care_center_parent" FromRole="care_center_kiddies" ToRole="care_center_parents" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_kiddies_care_center_setup_tab" FromRole="care_center_kiddies" ToRole="care_center_setup_tab" />
+          <NavigationProperty Name="care_photo_details" Relationship="CareDBModel.FK_care_photo_details_care_center_kiddies" FromRole="care_center_kiddies" ToRole="care_photo_details" />
+        </EntityType>
+        <Association Name="FK_care_center_invoice_care_center_kiddies">
+          <End Type="CareDBModel.care_center_kiddies" Role="care_center_kiddies" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_invoice" Role="care_center_invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_center_invoice">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_activity_care_center_kiddies">
+          <End Type="CareDBModel.care_center_kiddies" Role="care_center_kiddies" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_kiddies_activity" Role="care_center_kiddies_activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies_activity">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_care_center_parent">
+          <End Type="CareDBModel.care_center_parents" Role="care_center_parents" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_kiddies" Role="care_center_kiddies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_parents">
+              <PropertyRef Name="care_parent_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies">
+              <PropertyRef Name="care_parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_center_kiddies_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_kiddies" Role="care_center_kiddies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_kiddies">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_care_photo_details_care_center_kiddies">
+          <End Type="CareDBModel.care_center_kiddies" Role="care_center_kiddies" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_photo_details" Role="care_photo_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_kiddies">
+              <PropertyRef Name="care_kiddie_id" />
+            </Principal>
+            <Dependent Role="care_photo_details">
+              <PropertyRef Name="care_kiddie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="care_center_staffs">
+          <Key>
+            <PropertyRef Name="care_staff_id" />
+          </Key>
+          <Property Name="care_staff_id" Type="Guid" Nullable="false" />
+          <Property Name="care_staff_login_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_staff_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_staff_gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="care_center_id" Type="Guid" />
+          <Property Name="care_staff_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="care_staff_contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_staff_ratings" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="care_staff_date_registered" Type="DateTime" Precision="3" />
+          <Property Name="care_staff_employment_status" Type="Boolean" />
+          <Property Name="care_staff_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="care_center_setup_tab" Relationship="CareDBModel.FK_care_center_staffs_care_center_setup_tab" FromRole="care_center_staffs" ToRole="care_center_setup_tab" />
+        </EntityType>
+        <Association Name="FK_care_center_staffs_care_center_setup_tab">
+          <End Type="CareDBModel.care_center_setup_tab" Role="care_center_setup_tab" Multiplicity="0..1" />
+          <End Type="CareDBModel.care_center_staffs" Role="care_center_staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="care_center_setup_tab">
+              <PropertyRef Name="care_center_id" />
+            </Principal>
+            <Dependent Role="care_center_staffs">
+              <PropertyRef Name="care_center_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CareDBModelStoreContainer" CdmEntityContainer="CareDBEntities1">
+          <EntitySetMapping Name="care_center_bookeeping">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_bookeeping">
+              <MappingFragment StoreEntitySet="care_center_bookeeping">
+                <ScalarProperty Name="care_center_bookeeping_id" ColumnName="care_center_bookeeping_id" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_social_media">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_social_media">
+              <MappingFragment StoreEntitySet="care_center_social_media">
+                <ScalarProperty Name="care_center_social_media_id" ColumnName="care_center_social_media_id" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_subscription_details_table">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_subscription_details_table">
+              <MappingFragment StoreEntitySet="care_center_subscription_details_table">
+                <ScalarProperty Name="care_center_subscription_details_id" ColumnName="care_center_subscription_details_id" />
+                <ScalarProperty Name="subscription_type_id" ColumnName="subscription_type_id" />
+                <ScalarProperty Name="subscription_start_date" ColumnName="subscription_start_date" />
+                <ScalarProperty Name="subscription_end_date" ColumnName="subscription_end_date" />
+                <ScalarProperty Name="subscription_value" ColumnName="subscription_value" />
+                <ScalarProperty Name="subscription_note" ColumnName="subscription_note" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_subscription_features">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_subscription_features">
+              <MappingFragment StoreEntitySet="care_center_subscription_features">
+                <ScalarProperty Name="subscription_features_id" ColumnName="subscription_features_id" />
+                <ScalarProperty Name="subscription_type_id" ColumnName="subscription_type_id" />
+                <ScalarProperty Name="subscription_features_description" ColumnName="subscription_features_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_subscription_type">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_subscription_type">
+              <MappingFragment StoreEntitySet="care_center_subscription_type">
+                <ScalarProperty Name="subscription_type_id" ColumnName="subscription_type_id" />
+                <ScalarProperty Name="subscription_name" ColumnName="subscription_name" />
+                <ScalarProperty Name="subscription_duration" ColumnName="subscription_duration" />
+                <ScalarProperty Name="subscription_value" ColumnName="subscription_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_log">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_log">
+              <MappingFragment StoreEntitySet="care_center_log">
+                <ScalarProperty Name="care_center_last_login_date" ColumnName="care_center_last_login_date" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+                <ScalarProperty Name="care_center_log_details" ColumnName="care_center_log_details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_bookeeping_details">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_bookeeping_details">
+              <MappingFragment StoreEntitySet="care_center_bookeeping_details">
+                <ScalarProperty Name="payment_amount" ColumnName="payment_amount" />
+                <ScalarProperty Name="payment_description" ColumnName="payment_description" />
+                <ScalarProperty Name="care_center_bookeeping_id" ColumnName="care_center_bookeeping_id" />
+                <ScalarProperty Name="care_center_book_keeping_details_id" ColumnName="care_center_book_keeping_details_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_setup_photos">
+            <EntityTypeMapping TypeName="CareDBModel.care_setup_photos">
+              <MappingFragment StoreEntitySet="care_setup_photos">
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+                <ScalarProperty Name="care_setup_photo_id" ColumnName="care_setup_photo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_activity_setup">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_activity_setup">
+              <MappingFragment StoreEntitySet="care_center_activity_setup">
+                <ScalarProperty Name="care_center_activity_icon_path" ColumnName="care_center_activity_icon_path" />
+                <ScalarProperty Name="care_center_activity_details" ColumnName="care_center_activity_details" />
+                <ScalarProperty Name="care_center_activity_title" ColumnName="care_center_activity_title" />
+                <ScalarProperty Name="care_center_activity_id" ColumnName="care_center_activity_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_kiddies_activity">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_kiddies_activity">
+              <MappingFragment StoreEntitySet="care_center_kiddies_activity">
+                <ScalarProperty Name="care_center_kiddies_activity_media_type" ColumnName="care_center_kiddies_activity_media_type" />
+                <ScalarProperty Name="care_center_kiddies_activity_video_path" ColumnName="care_center_kiddies_activity_video_path" />
+                <ScalarProperty Name="care_kiddie_id" ColumnName="care_kiddie_id" />
+                <ScalarProperty Name="care_center_kiddies_activity_date_updated" ColumnName="care_center_kiddies_activity_date_updated" />
+                <ScalarProperty Name="care_center_kiddies_activity_image_path" ColumnName="care_center_kiddies_activity_image_path" />
+                <ScalarProperty Name="care_center_kiddies_activity_notes" ColumnName="care_center_kiddies_activity_notes" />
+                <ScalarProperty Name="care_center_activity_id" ColumnName="care_center_activity_id" />
+                <ScalarProperty Name="care_center_kiddies_activity_id" ColumnName="care_center_kiddies_activity_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_parents">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_parents">
+              <MappingFragment StoreEntitySet="care_center_parents">
+                <ScalarProperty Name="care_parent_occupation" ColumnName="care_parent_occupation" />
+                <ScalarProperty Name="care_parent_contact_email" ColumnName="care_parent_contact_email" />
+                <ScalarProperty Name="care_parent_contact_phone" ColumnName="care_parent_contact_phone" />
+                <ScalarProperty Name="care_parent_full_name" ColumnName="care_parent_full_name" />
+                <ScalarProperty Name="care_parent_login_password" ColumnName="care_parent_login_password" />
+                <ScalarProperty Name="care_parent_login_id" ColumnName="care_parent_login_id" />
+                <ScalarProperty Name="care_parent_id" ColumnName="care_parent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_photo_details">
+            <EntityTypeMapping TypeName="CareDBModel.care_photo_details">
+              <MappingFragment StoreEntitySet="care_photo_details">
+                <ScalarProperty Name="care_photo_description" ColumnName="care_photo_description" />
+                <ScalarProperty Name="care_photo_date_captured" ColumnName="care_photo_date_captured" />
+                <ScalarProperty Name="care_center_photo_path" ColumnName="care_center_photo_path" />
+                <ScalarProperty Name="care_kiddie_id" ColumnName="care_kiddie_id" />
+                <ScalarProperty Name="care_center_photo_id" ColumnName="care_center_photo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_invoice">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_invoice">
+              <MappingFragment StoreEntitySet="care_center_invoice">
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="payment_made" ColumnName="payment_made" />
+                <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+                <ScalarProperty Name="receipt_no" ColumnName="receipt_no" />
+                <ScalarProperty Name="care_center_book_keeping_details_id" ColumnName="care_center_book_keeping_details_id" />
+                <ScalarProperty Name="care_kiddie_id" ColumnName="care_kiddie_id" />
+                <ScalarProperty Name="care_center_invoice_id" ColumnName="care_center_invoice_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_setup_tab">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_setup_tab">
+              <MappingFragment StoreEntitySet="care_center_setup_tab">
+                <ScalarProperty Name="care_center_image_path" ColumnName="care_center_image_path" />
+                <ScalarProperty Name="care_center_website" ColumnName="care_center_website" />
+                <ScalarProperty Name="care_center_contact_number" ColumnName="care_center_contact_number" />
+                <ScalarProperty Name="care_center_email" ColumnName="care_center_email" />
+                <ScalarProperty Name="care_center_folder_id" ColumnName="care_center_folder_id" />
+                <ScalarProperty Name="care_center_staff_strength" ColumnName="care_center_staff_strength" />
+                <ScalarProperty Name="care_center_activate_deactivate" ColumnName="care_center_activate_deactivate" />
+                <ScalarProperty Name="care_center_date_registered" ColumnName="care_center_date_registered" />
+                <ScalarProperty Name="care_center_password" ColumnName="care_center_password" />
+                <ScalarProperty Name="care_center_subscription_status" ColumnName="care_center_subscription_status" />
+                <ScalarProperty Name="care_center_location" ColumnName="care_center_location" />
+                <ScalarProperty Name="care_center_name" ColumnName="care_center_name" />
+                <ScalarProperty Name="care_center_login_name" ColumnName="care_center_login_name" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_kiddies">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_kiddies">
+              <MappingFragment StoreEntitySet="care_center_kiddies">
+                <ScalarProperty Name="care_kiddie_gender" ColumnName="care_kiddie_gender" />
+                <ScalarProperty Name="care_kiddie_profile_photo_path" ColumnName="care_kiddie_profile_photo_path" />
+                <ScalarProperty Name="care_kiddie_genotype" ColumnName="care_kiddie_genotype" />
+                <ScalarProperty Name="care_kiddie_blood_group" ColumnName="care_kiddie_blood_group" />
+                <ScalarProperty Name="care_kiddie_DOB" ColumnName="care_kiddie_DOB" />
+                <ScalarProperty Name="care_kiddie_othername" ColumnName="care_kiddie_othername" />
+                <ScalarProperty Name="care_kiddie_firstname" ColumnName="care_kiddie_firstname" />
+                <ScalarProperty Name="care_kiddie_lastname" ColumnName="care_kiddie_lastname" />
+                <ScalarProperty Name="care_parent_id" ColumnName="care_parent_id" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+                <ScalarProperty Name="care_kiddie_id" ColumnName="care_kiddie_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="care_center_staffs">
+            <EntityTypeMapping TypeName="CareDBModel.care_center_staffs">
+              <MappingFragment StoreEntitySet="care_center_staffs">
+                <ScalarProperty Name="care_staff_email" ColumnName="care_staff_email" />
+                <ScalarProperty Name="care_staff_employment_status" ColumnName="care_staff_employment_status" />
+                <ScalarProperty Name="care_staff_date_registered" ColumnName="care_staff_date_registered" />
+                <ScalarProperty Name="care_staff_ratings" ColumnName="care_staff_ratings" />
+                <ScalarProperty Name="care_staff_contact_number" ColumnName="care_staff_contact_number" />
+                <ScalarProperty Name="care_staff_name" ColumnName="care_staff_name" />
+                <ScalarProperty Name="care_center_id" ColumnName="care_center_id" />
+                <ScalarProperty Name="care_staff_gender" ColumnName="care_staff_gender" />
+                <ScalarProperty Name="care_staff_password" ColumnName="care_staff_password" />
+                <ScalarProperty Name="care_staff_login_name" ColumnName="care_staff_login_name" />
+                <ScalarProperty Name="care_staff_id" ColumnName="care_staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

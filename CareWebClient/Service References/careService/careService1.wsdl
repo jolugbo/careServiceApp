@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="careCenterLoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="careCenterPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="careCenterEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="tns:RegDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RegStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterStaff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newStaff" type="tns:Staffs" />
+            <s:element minOccurs="1" maxOccurs="1" name="careCenterId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Staffs">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CareStaffId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffLoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffContactNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffRatings" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateRegistered" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CareStaffEmploymentStatus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CareStaffEmail" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterStaffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterStaffResult" type="tns:RegDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserWebResult" type="tns:LoginDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CareCenterId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valid" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CenterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CenterLocation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubscriptionStatus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivateDeactivate" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffStrength" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FolderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CenterEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImgPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Logo" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransDetails" type="tns:ArrayOfPayment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPayment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Payment" nillable="true" type="tns:Payment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Payment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentInvoiced" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiptNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentMade" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymenType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="profileChangesDetails" type="tns:LoginDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateProfileResult" type="tns:UpdateDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCareCenterKiddiesDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="centerId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCareCenterKiddiesDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCareCenterKiddiesDetailsResult" type="tns:ArrayOfCareKiddieDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCareKiddieDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CareKiddieDetails" nillable="true" type="tns:CareKiddieDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CareKiddieDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CareCenterId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarekiddieId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieOtherName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarekiddieDob" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieBloodGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieGenotype" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddieGender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarekiddiePhotoPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentDetails" type="tns:ArrayOfPayment" />
+          <s:element minOccurs="0" maxOccurs="1" name="Parents" type="tns:Parent" />
+          <s:element minOccurs="0" maxOccurs="1" name="Activities" type="tns:ArrayOfActivities" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pictures" type="tns:ArrayOfPictures" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Parent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ParentId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentLoginId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentFullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentContactNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Occupation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfActivities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Activities" nillable="true" type="tns:Activities" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Activities">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="KiddiesActivityId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="KiddiesActivityNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KiddiesActivityImagePath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="KiddiesActivityDateUpdated" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityIconPath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPictures">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Pictures" nillable="true" type="tns:Pictures" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Pictures">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PhotoId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhotoPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhotoDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCaptured" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCareCenterStaffsDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="centerId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCareCenterStaffsDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCareCenterStaffsDetailsResult" type="tns:ArrayOfStaffs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStaffs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Staffs" nillable="true" type="tns:Staffs" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateUserApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserAppResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterStaffSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterStaff" />
+  </wsdl:message>
+  <wsdl:message name="RegisterStaffSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserWebSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserWeb" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserWebSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProfile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCareCenterKiddiesDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCareCenterKiddiesDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCareCenterKiddiesDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCareCenterKiddiesDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCareCenterStaffsDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCareCenterStaffsDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetCareCenterStaffsDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCareCenterStaffsDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserAppSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserApp" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserAppSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserAppResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CareService1Soap">
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterStaff">
+      <wsdl:input message="tns:RegisterStaffSoapIn" />
+      <wsdl:output message="tns:RegisterStaffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserWeb">
+      <wsdl:input message="tns:AuthenticateUserWebSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input message="tns:UpdateProfileSoapIn" />
+      <wsdl:output message="tns:UpdateProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterKiddiesDetails">
+      <wsdl:input message="tns:GetCareCenterKiddiesDetailsSoapIn" />
+      <wsdl:output message="tns:GetCareCenterKiddiesDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterStaffsDetails">
+      <wsdl:input message="tns:GetCareCenterStaffsDetailsSoapIn" />
+      <wsdl:output message="tns:GetCareCenterStaffsDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserApp">
+      <wsdl:input message="tns:AuthenticateUserAppSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserAppSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CareService1Soap" type="tns:CareService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterStaff">
+      <soap:operation soapAction="http://tempuri.org/RegisterStaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserWeb">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUserWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap:operation soapAction="http://tempuri.org/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterKiddiesDetails">
+      <soap:operation soapAction="http://tempuri.org/GetCareCenterKiddiesDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterStaffsDetails">
+      <soap:operation soapAction="http://tempuri.org/GetCareCenterStaffsDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserApp">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUserApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CareService1Soap12" type="tns:CareService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterStaff">
+      <soap12:operation soapAction="http://tempuri.org/RegisterStaff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserWeb">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUserWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap12:operation soapAction="http://tempuri.org/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterKiddiesDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetCareCenterKiddiesDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCareCenterStaffsDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetCareCenterStaffsDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUserApp">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUserApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CareService1">
+    <wsdl:port name="CareService1Soap" binding="tns:CareService1Soap">
+      <soap:address location="http://localhost:55176/careService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CareService1Soap12" binding="tns:CareService1Soap12">
+      <soap12:address location="http://localhost:55176/careService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

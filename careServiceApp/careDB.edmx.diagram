@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aad4543c05784eb887cbf8433e97801d" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="CareDBModel.care_center_bookeeping" Width="1.375" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_social_media" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_subscription_details_table" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_subscription_features" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_subscription_type" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_subscription_details_table_care_center_subscription_type" ManuallyRouted="false" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_subscription_features_care_center_subscription_type" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_log" Width="1.5" PointX="13.25" PointY="9.25" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_bookeeping_details" Width="2.5" PointX="11" PointY="12" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_bookeeping_details_care_center_bookeeping" />
+        <EntityTypeShape EntityType="CareDBModel.care_setup_photos" Width="1.5" PointX="0.5" PointY="11.25" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_activity_setup" Width="2" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_kiddies_activity" Width="2.25" PointX="10.625" PointY="6.875" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_kiddies_activity_care_center_activity_setup" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_parents" Width="2.125" PointX="8.25" PointY="1.125" />
+        <EntityTypeShape EntityType="CareDBModel.care_photo_details" Width="1.5" PointX="5.375" PointY="8.25" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_invoice" Width="1.5" PointX="7" PointY="12" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_invoice_care_center_bookeeping_details" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_setup_tab" Width="1.5" PointX="0.5" PointY="2.5" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_bookeeping_care_center_setup_tab" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_log_care_center_setup_tab" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_social_media_care_center_setup_tab" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_subscription_details_table_care_center_setup_tab" />
+        <AssociationConnector Association="CareDBModel.FK_care_setup_photos_care_setup_photos" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_kiddies" Width="1.5" PointX="13.125" PointY="2.25" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_invoice_care_center_kiddies" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_kiddies_activity_care_center_kiddies" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_kiddies_care_center_parent" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_kiddies_care_center_setup_tab" />
+        <AssociationConnector Association="CareDBModel.FK_care_photo_details_care_center_kiddies" />
+        <EntityTypeShape EntityType="CareDBModel.care_center_staffs" Width="1.5" PointX="2.75" PointY="9.375" />
+        <AssociationConnector Association="CareDBModel.FK_care_center_staffs_care_center_setup_tab" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
