@@ -53,7 +53,7 @@ namespace CareWebClient
             mail.To.Add(mailto);
             mail.Subject = "this is a test email";
             mail.Body = "this is my test email body";
-            smtpServer.Credentials = new NetworkCredential("jolugbofemi@gmail.com", "biggysmalls");
+            smtpServer.Credentials = new NetworkCredential("jolugbofemi@gmail.com", "");
             smtpServer.EnableSsl = true;
             smtpServer.Send(mail);
             
